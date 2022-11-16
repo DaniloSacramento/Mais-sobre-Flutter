@@ -16,29 +16,46 @@ class _Tela1State extends State<Tela1> {
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(left: 32),
+          padding: EdgeInsets.only(left: 18),
           child: Text(
-            "INFLUENCIADORES",
-            style: TextStyle(fontSize: 28,
-            color: Colors.red
-            ),
-            
+            "Tarefas",
+            style: TextStyle(fontSize: 28, color: Colors.red),
           ),
         ),
-       backgroundColor: Colors.transparent,
-       elevation: 0,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: ListView(
         children: const [
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-          Task(nome: "Danilo "),
-         
+          Task(
+            nome: "Aprender Flutter ",
+            foto:
+                "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+            dificuldade: 2,
+          ),
+          Task(
+            nome: "Andar de Bike ",
+            foto:
+                "https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg",
+            dificuldade: 5,
+          ),
+          Task(
+            nome: "Ler ",
+            foto:
+                "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+            dificuldade: 3,
+          ),
+          Task(
+            nome: "Meditar ",
+            foto:
+                "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+            dificuldade: 4,
+          ),
+          Task(
+            nome: "Jogar ",
+            foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
+            dificuldade: 1,
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -51,11 +68,15 @@ class _Tela1State extends State<Tela1> {
 
 class Task extends StatefulWidget {
   final String nome;
+  final String foto;
+  final int dificuldade;
 
-  const Task({
-    Key? key,
-    required this.nome,
-  }) : super(key: key);
+  const Task(
+      {Key? key,
+      required this.nome,
+      required this.foto,
+      required this.dificuldade})
+      : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();
@@ -71,29 +92,64 @@ class _TaskState extends State<Task> {
         child: Stack(
           children: [
             Container(
-              color: Colors.red[500],
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.red[500],
+              ),
               height: 140,
             ),
             Column(
               children: [
                 Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.white,
+                  ),
                   height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.black26,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black26,
+                        ),
                         width: 72,
                         height: 100,
-                      ),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          widget.nome,
-                          style: const TextStyle(
-                              fontSize: 24, overflow: TextOverflow.ellipsis),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: Image.network(
+                            widget.foto,
+                            fit: BoxFit.cover,
+                          ),
                         ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            child: Text(
+                              widget.nome,
+                              style: const TextStyle(
+                                  fontSize: 24,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.star, size: 15, 
+                              color: (widget.dificuldade >= 1 ) ? Colors.red : Colors.red[100]),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 2 ) ? Colors.red : Colors.red[100]),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 3 ) ? Colors.red : Colors.red[100]),
+                              Icon(Icons.star,
+                                  size: 15, color: (widget.dificuldade >= 4 ) ? Colors.red : Colors.red[100]),
+                              Icon(Icons.star,
+                                  size: 15, color: (widget.dificuldade >= 5 ) ? Colors.red : Colors.red[100]),
+                            ],
+                          )
+                        ],
                       ),
                       Container(
                         height: 52,
@@ -109,10 +165,12 @@ class _TaskState extends State<Task> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               const Icon(Icons.arrow_drop_up),
-                              Text("UP", style: TextStyle(fontSize: 12),)
+                              Text(
+                                "UP",
+                                style: TextStyle(fontSize: 12),
+                              )
                             ],
                           ),
-                          
                         ),
                       )
                     ],
@@ -126,7 +184,8 @@ class _TaskState extends State<Task> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: nivel / 10,
+                          value: (widget.dificuldade > 0) ? 
+                          (nivel/widget.dificuldade) / 10 : 1
                         ),
                         width: 200,
                       ),
