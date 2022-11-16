@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'main.dart';
 
 class Tela1 extends StatefulWidget {
   const Tela1({super.key});
@@ -11,6 +12,9 @@ class Tela1 extends StatefulWidget {
 }
 
 class _Tela1State extends State<Tela1> {
+
+  bool opacidade = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,42 +29,50 @@ class _Tela1State extends State<Tela1> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: ListView(
-        children: const [
-          Task(
-            nome: "Aprender Flutter ",
-            foto:
-                "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
-            dificuldade: 2,
-          ),
-          Task(
-            nome: "Andar de Bike ",
-            foto:
-                "https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg",
-            dificuldade: 5,
-          ),
-          Task(
-            nome: "Ler ",
-            foto:
-                "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
-            dificuldade: 3,
-          ),
-          Task(
-            nome: "Meditar ",
-            foto:
-                "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
-            dificuldade: 4,
-          ),
-          Task(
-            nome: "Jogar ",
-            foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
-            dificuldade: 1,
-          ),
-        ],
+      body: AnimatedOpacity(
+        opacity: opacidade ? 1 : 0,
+        duration: Duration(milliseconds: 800),
+        child: ListView(
+          children: const [
+            Task(
+              nome: "Aprender Flutter ",
+              foto:
+                  "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+              dificuldade: 2,
+            ),
+            Task(
+              nome: "Andar de Bike ",
+              foto:
+                  "https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg",
+              dificuldade: 5,
+            ),
+            Task(
+              nome: "Ler ",
+              foto:
+                  "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+              dificuldade: 3,
+            ),
+            Task(
+              nome: "Meditar ",
+              foto:
+                  "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+              dificuldade: 4,
+            ),
+            Task(
+              nome: "Jogar ",
+              foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
+              dificuldade: 1,
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            opacidade = !opacidade;
+          });
+        },
+        child: const Icon(Icons.remove_red_eye),
       ),
     );
   }
