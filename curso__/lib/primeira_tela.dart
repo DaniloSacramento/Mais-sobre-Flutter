@@ -7,78 +7,19 @@ class Tela1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.yellow,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.blue,
-                width: 100,
-                height: 100,
-              )
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Tarefas",
+          style: TextStyle(
+            fontSize: 28
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.blue,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.yellow,
-                width: 100,
-                height: 100,
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.blue,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-              ),
-              Container(
-                color: Colors.yellow,
-                width: 100,
-                height: 100,
-              )
-            ],
-          ),
-          ElevatedButton(onPressed: () {}, child: Text("Ola mundo"))
-        ],
+        ),
       ),
+      body: Container(
+          color: Colors.amber,
+      ),
+      floatingActionButton: 
+      FloatingActionButton(onPressed: (){}, child: const Icon(Icons.add),),
     );
   }
 }
