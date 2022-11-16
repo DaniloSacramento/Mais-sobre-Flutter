@@ -16,32 +16,19 @@ class _Tela1State extends State<Tela1> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Tarefas",
-          style: TextStyle(fontSize: 28),
+          "INFLUENCIADORES",
+          style: TextStyle(fontSize: 28,
+          color: Colors.red
+          ),
+          
         ),
+       backgroundColor: Colors.transparent,
+       elevation: 0,
       ),
       body: ListView(
-        
         children: const [
-          Task(nome: "Aprender Flutter"),
-          Task(
-            nome: 'Andar de bike',
-          ),
-          Task(
-            nome: "Meditar",
-          ),
-          Task(
-            nome: "Meditar",
-          ),
-          Task(
-            nome: "Meditar",
-          ),
-          Task(
-            nome: "Meditar",
-          ),
-          Task(
-            nome: "Meditar",
-          ),
+          Task(nome: "Danilo "),
+         
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -54,7 +41,6 @@ class _Tela1State extends State<Tela1> {
 
 class Task extends StatefulWidget {
   final String nome;
-
 
   const Task({
     Key? key,
@@ -69,14 +55,13 @@ class _TaskState extends State<Task> {
   int nivel = 0;
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         child: Stack(
           children: [
             Container(
-              color: Colors.blue,
+              color: Colors.red[500],
               height: 140,
             ),
             Column(
@@ -96,9 +81,8 @@ class _TaskState extends State<Task> {
                         width: 200,
                         child: Text(
                           widget.nome,
-                          style: const TextStyle(fontSize: 24,
-                          overflow: TextOverflow.ellipsis
-                          ),
+                          style: const TextStyle(
+                              fontSize: 24, overflow: TextOverflow.ellipsis),
                         ),
                       ),
                       ElevatedButton(
@@ -106,19 +90,34 @@ class _TaskState extends State<Task> {
                           setState(() {
                             nivel++;
                           });
-                          
-                          print(nivel);
                         },
                         child: const Icon(Icons.arrow_drop_up),
                       )
                     ],
                   ),
                 ),
-                 Text("Nivel: $nivel", 
-                style: TextStyle(fontSize: 16,
-                color: Colors.white
-                  ),
-                )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Container(
+                        child: LinearProgressIndicator(
+                          color: Colors.white,
+                          value: nivel / 10,
+                        ),
+                        width: 200,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Nivel: $nivel",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             )
           ],
