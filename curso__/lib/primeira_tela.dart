@@ -15,18 +15,28 @@ class _Tela1State extends State<Tela1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "INFLUENCIADORES",
-          style: TextStyle(fontSize: 28,
-          color: Colors.red
+        title: const Padding(
+          padding: EdgeInsets.only(left: 32),
+          child: Text(
+            "INFLUENCIADORES",
+            style: TextStyle(fontSize: 28,
+            color: Colors.red
+            ),
+            
           ),
-          
         ),
        backgroundColor: Colors.transparent,
        elevation: 0,
       ),
       body: ListView(
         children: const [
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
+          Task(nome: "Danilo "),
           Task(nome: "Danilo "),
          
         ],
@@ -85,13 +95,25 @@ class _TaskState extends State<Task> {
                               fontSize: 24, overflow: TextOverflow.ellipsis),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            nivel++;
-                          });
-                        },
-                        child: const Icon(Icons.arrow_drop_up),
+                      Container(
+                        height: 52,
+                        width: 52,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              nivel++;
+                            });
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              const Icon(Icons.arrow_drop_up),
+                              Text("UP", style: TextStyle(fontSize: 12),)
+                            ],
+                          ),
+                          
+                        ),
                       )
                     ],
                   ),
