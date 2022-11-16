@@ -7,25 +7,20 @@ class Tela1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          Container(
-            color: Colors.red,
-            height: 300,
-            width: 300,
-          ),
-          Container(
-            color: Colors.blue,
-            width: 150,
-            height: 150,
-          ),
-          Container(
-            color: Colors.yellow,
-            width: 75,
-            height: 75,
-          )
-        ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(color: Colors.red,
+              width: 100,
+              height: 100,
+        ),
+         Container(color: Colors.blue,
+              width: 100,
+              height: 100,
+        )
+      ],
     );
+    
   }
 }
