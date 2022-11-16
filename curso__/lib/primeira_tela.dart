@@ -15,12 +15,28 @@ class Tela1 extends StatelessWidget {
           style: TextStyle(fontSize: 28),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: ListView(
+        
         children: const [
           Task(nome: "Aprender Flutter"),
-          Task( nome: 'Andar de bike',),
-          Task(nome: "Meditar",),
+          Task(
+            nome: 'Andar de bike',
+          ),
+          Task(
+            nome: "Meditar",
+          ),
+          Task(
+            nome: "Meditar",
+          ),
+          Task(
+            nome: "Meditar",
+          ),
+          Task(
+            nome: "Meditar",
+          ),
+          Task(
+            nome: "Meditar",
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -40,7 +56,9 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
         child: Stack(
           children: [
             Container(
@@ -58,9 +76,14 @@ class Task extends StatelessWidget {
                     width: 72,
                     height: 100,
                   ),
-                   Text(
-                    nome,
-                    style: TextStyle(fontSize: 26),
+                  Container(
+                    width: 200,
+                    child: Text(
+                      nome,
+                      style: const TextStyle(fontSize: 24,
+                      overflow: TextOverflow.ellipsis
+                      ),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {},
@@ -71,6 +94,7 @@ class Task extends StatelessWidget {
             )
           ],
         ),
-      );
+      ),
+    );
   }
 }
