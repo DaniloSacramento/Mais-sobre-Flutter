@@ -8,25 +8,26 @@ class Tela1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-       color: Colors.black,
-       child: Column(
+      color: Colors.white,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-   crossAxisAlignment: CrossAxisAlignment.center,
-
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-         mainAxisAlignment: MainAxisAlignment.spaceAround,
-   crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 color: Colors.red,
                 width: 100,
                 height: 100,
-              ),Container(
+              ),
+              Container(
                 color: Colors.yellow,
                 width: 100,
                 height: 100,
-              ),Container(
+              ),
+              Container(
                 color: Colors.blue,
                 width: 100,
                 height: 100,
@@ -35,48 +36,49 @@ class Tela1 extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-   crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Container(
                 color: Colors.blue,
                 width: 100,
                 height: 100,
               ),
-               Container(
+              Container(
                 color: Colors.red,
                 width: 100,
                 height: 100,
               ),
-               Container(
+              Container(
                 color: Colors.yellow,
                 width: 100,
                 height: 100,
               )
-             ],
+            ],
           ),
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-   crossAxisAlignment: CrossAxisAlignment.center,
-             children: [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Container(
                 color: Colors.blue,
                 width: 100,
                 height: 100,
               ),
-               Container(
+              Container(
                 color: Colors.red,
                 width: 100,
                 height: 100,
               ),
-               Container(
+              Container(
                 color: Colors.yellow,
                 width: 100,
                 height: 100,
               )
-             ],
-          )
+            ],
+          ),
+          ElevatedButton(onPressed: () {}, child: Text("Ola mundo"))
         ],
-       ),
+      ),
     );
   }
 }
