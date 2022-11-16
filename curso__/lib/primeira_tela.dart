@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Tela1 extends StatelessWidget {
+class Tela1 extends StatefulWidget {
   const Tela1({super.key});
 
+  @override
+  State<Tela1> createState() => _Tela1State();
+}
+
+class _Tela1State extends State<Tela1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +52,24 @@ class Tela1 extends StatelessWidget {
   }
 }
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String nome;
+
+
   const Task({
     Key? key,
     required this.nome,
   }) : super(key: key);
 
   @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  int nivel = 0;
+  @override
   Widget build(BuildContext context) {
+    
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -65,32 +79,47 @@ class Task extends StatelessWidget {
               color: Colors.blue,
               height: 140,
             ),
-            Container(
-              color: Colors.white,
-              height: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    color: Colors.black26,
-                    width: 72,
-                    height: 100,
-                  ),
-                  Container(
-                    width: 200,
-                    child: Text(
-                      nome,
-                      style: const TextStyle(fontSize: 24,
-                      overflow: TextOverflow.ellipsis
+            Column(
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        color: Colors.black26,
+                        width: 72,
+                        height: 100,
                       ),
-                    ),
+                      Container(
+                        width: 200,
+                        child: Text(
+                          widget.nome,
+                          style: const TextStyle(fontSize: 24,
+                          overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            nivel++;
+                          });
+                          
+                          print(nivel);
+                        },
+                        child: const Icon(Icons.arrow_drop_up),
+                      )
+                    ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Icon(Icons.arrow_drop_up),
-                  )
-                ],
-              ),
+                ),
+                 Text("Nivel: $nivel", 
+                style: TextStyle(fontSize: 16,
+                color: Colors.white
+                  ),
+                )
+              ],
             )
           ],
         ),
