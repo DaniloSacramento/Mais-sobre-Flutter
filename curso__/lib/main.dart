@@ -1,5 +1,7 @@
-import 'package:curso__/primeira_tela.dart';
+
 import 'package:flutter/material.dart';
+
+import 'primeira_tela.dart';
 
 void main() {
   runApp( MyApp());

@@ -12,7 +12,6 @@ class Tela1 extends StatefulWidget {
 }
 
 class _Tela1State extends State<Tela1> {
-
   bool opacidade = true;
 
   @override
@@ -36,26 +35,22 @@ class _Tela1State extends State<Tela1> {
           children: const [
             Task(
               nome: "Aprender Flutter ",
-              foto:
-                  "assets/images/dash.png",
+              foto: "assets/images/dash.png",
               dificuldade: 2,
             ),
             Task(
               nome: "Andar de Bike ",
-              foto:
-                  "assets/images/bike.webp",
+              foto: "assets/images/bike.webp",
               dificuldade: 5,
             ),
             Task(
               nome: "Ler ",
-              foto:
-                  "assets/images/meditar.jpeg",
+              foto: "assets/images/meditar.jpeg",
               dificuldade: 3,
             ),
             Task(
               nome: "Meditar ",
-              foto:
-                  "assets/images/livro.jpg",
+              foto: "assets/images/livro.jpg",
               dificuldade: 4,
             ),
             Task(
@@ -99,6 +94,18 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   int nivel = 0;
+  int minLevel = 10;
+  int masteryLevel = 1;
+
+  Map<int, Color> mastery = {
+    1: Colors.blue,
+    2: Colors.yellow,
+    3: Colors.orange,
+    4: Colors.red,
+    5: Colors.purple,
+    6: Colors.black,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -108,8 +115,10 @@ class _TaskState extends State<Task> {
           children: [
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.red[500],
+                borderRadius: BorderRadius.circular(10),
+                color: masteryLevel <= mastery.keys.last
+                    ? mastery[masteryLevel]
+                    : mastery[mastery.keys.last],
               ),
               height: 140,
             ),
@@ -154,14 +163,31 @@ class _TaskState extends State<Task> {
                           ),
                           Row(
                             children: [
-                              Icon(Icons.star, size: 15, 
-                              color: (widget.dificuldade >= 1 ) ? Colors.red : Colors.red[100]),
-                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 2 ) ? Colors.red : Colors.red[100]),
-                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 3 ) ? Colors.red : Colors.red[100]),
                               Icon(Icons.star,
-                                  size: 15, color: (widget.dificuldade >= 4 ) ? Colors.red : Colors.red[100]),
+                                  size: 15,
+                                  color: (widget.dificuldade >= 1)
+                                      ? Colors.red
+                                      : Colors.red[100]),
                               Icon(Icons.star,
-                                  size: 15, color: (widget.dificuldade >= 5 ) ? Colors.red : Colors.red[100]),
+                                  size: 15,
+                                  color: (widget.dificuldade >= 2)
+                                      ? Colors.red
+                                      : Colors.red[100]),
+                              Icon(Icons.star,
+                                  size: 15,
+                                  color: (widget.dificuldade >= 3)
+                                      ? Colors.red
+                                      : Colors.red[100]),
+                              Icon(Icons.star,
+                                  size: 15,
+                                  color: (widget.dificuldade >= 4)
+                                      ? Colors.red
+                                      : Colors.red[100]),
+                              Icon(Icons.star,
+                                  size: 15,
+                                  color: (widget.dificuldade >= 5)
+                                      ? Colors.red
+                                      : Colors.red[100]),
                             ],
                           )
                         ],
@@ -173,6 +199,11 @@ class _TaskState extends State<Task> {
                           onPressed: () {
                             setState(() {
                               nivel++;
+                              if ((nivel / widget.dificuldade) >
+                                  (minLevel * masteryLevel)) {
+                                nivel = 0;
+                                masteryLevel++;
+                              }
                             });
                           },
                           child: Column(
@@ -199,8 +230,12 @@ class _TaskState extends State<Task> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: (widget.dificuldade > 0) ? 
-                          (nivel/widget.dificuldade) / 10 : 1
+                          value: widget.dificuldade > 0
+                              ? (nivel / widget.dificuldade) /
+                                  (minLevel *
+                                      masteryLevel) /*Aqui o nível mínimo é multiplicado pela maestria, então
+                            quanto maior a maestria mais difícil é chegar até o fim da barra de progresso*/
+                              : 1,
                         ),
                         width: 200,
                       ),
