@@ -20,7 +20,7 @@ class _Tela1State extends State<Tela1> {
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(left: 18),
+          padding: EdgeInsets.only(left: 10),
           child: Text(
             "Tarefas",
             style: TextStyle(fontSize: 28, color: Colors.red),
@@ -37,32 +37,35 @@ class _Tela1State extends State<Tela1> {
             Task(
               nome: "Aprender Flutter ",
               foto:
-                  "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
+                  "assets/images/dash.png",
               dificuldade: 2,
             ),
             Task(
               nome: "Andar de Bike ",
               foto:
-                  "https://tswbike.com/wp-content/uploads/2020/09/108034687_626160478000800_2490880540739582681_n-e1600200953343.jpg",
+                  "assets/images/bike.webp",
               dificuldade: 5,
             ),
             Task(
               nome: "Ler ",
               foto:
-                  "https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg",
+                  "assets/images/meditar.jpeg",
               dificuldade: 3,
             ),
             Task(
               nome: "Meditar ",
               foto:
-                  "https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg",
+                  "assets/images/livro.jpg",
               dificuldade: 4,
             ),
             Task(
               nome: "Jogar ",
-              foto: "https://i.ibb.co/tB29PZB/kako-epifania-2022-2-c-pia.jpg",
+              foto: "assets/images/jogar.jpg",
               dificuldade: 1,
             ),
+            SizedBox(
+              height: 80,
+            )
           ],
         ),
       ),
@@ -130,7 +133,7 @@ class _TaskState extends State<Task> {
                         height: 100,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
-                          child: Image.network(
+                          child: Image.asset(
                             widget.foto,
                             fit: BoxFit.cover,
                           ),
