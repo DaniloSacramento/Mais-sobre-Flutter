@@ -52,19 +52,19 @@ class Task extends StatefulWidget {
   final String foto;
   final int dificuldade;
 
-  const Task(
+   Task(
       {Key? key,
       required this.nome,
       required this.foto,
       required this.dificuldade})
       : super(key: key);
-
+  int nivel = 0;
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 0;
+  
   bool assetOrNetword(){
     if(widget.foto.contains("http")){
       return false;
@@ -175,10 +175,10 @@ class _TaskState extends State<Task> {
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              nivel++;
-                              if ((nivel / widget.dificuldade) >
+                              widget.nivel++;
+                              if ((  widget.nivel / widget.dificuldade) >
                                   (minLevel * masteryLevel)) {
-                                nivel = 0;
+                                  widget.nivel = 0;
                                 masteryLevel++;
                               }
                             });
@@ -208,7 +208,7 @@ class _TaskState extends State<Task> {
                         child: LinearProgressIndicator(
                           color: Colors.white,
                           value: widget.dificuldade > 0
-                              ? (nivel / widget.dificuldade) /
+                              ? (  widget.nivel / widget.dificuldade) /
                                   (minLevel *
                                       masteryLevel) /*Aqui o nível mínimo é multiplicado pela maestria, então
                             quanto maior a maestria mais difícil é chegar até o fim da barra de progresso*/
@@ -220,7 +220,7 @@ class _TaskState extends State<Task> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Nivel: $nivel",
+                        "Nivel: ${widget.nivel}",
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
