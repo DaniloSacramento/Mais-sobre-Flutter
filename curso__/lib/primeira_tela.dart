@@ -30,6 +30,7 @@ class _Tela1State extends State<Tela1> {
       ),
       body: ListView(
         children: TaskInherited.of(context)!.taskList,
+        padding: EdgeInsets.only(top: 8, bottom: 70) ,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -64,6 +65,12 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   int nivel = 0;
+  bool assetOrNetword(){
+    if(widget.foto.contains("http")){
+      return false;
+    }
+    return true;
+  }
   int minLevel = 10;
   int masteryLevel = 1;
 
@@ -112,10 +119,10 @@ class _TaskState extends State<Task> {
                         height: 100,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
-                          child: Image.asset(
+                          child:assetOrNetword()? Image.asset(
                             widget.foto,
                             fit: BoxFit.cover,
-                          ),
+                          ) : Image.network(widget.foto, fit: BoxFit.cover),
                         ),
                       ),
                       Column(
