@@ -190,8 +190,8 @@ class _TaskState extends State<Task> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              const Icon(Icons.arrow_drop_up),
+                            children: const [
+                              Icon(Icons.arrow_drop_up),
                               Text(
                                 "UP",
                                 style: TextStyle(fontSize: 12),
@@ -225,7 +225,7 @@ class _TaskState extends State<Task> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Nivel: ${widget.nivel}",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: const TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   ],
