@@ -14,10 +14,13 @@ class Tela1 extends StatefulWidget {
 }
 
 class _Tela1State extends State<Tela1> {
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
+        
         title: const Padding(
           padding: EdgeInsets.only(left: 10),
           child: Text(
@@ -50,7 +53,8 @@ class _Tela1State extends State<Tela1> {
 class Task extends StatefulWidget {
   final String nome;
   final String foto;
-  final int dificuldade;
+  final int dificuldade;  
+  
 
    Task(
       {Key? key,
