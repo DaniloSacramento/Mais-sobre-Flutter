@@ -2,6 +2,7 @@
 import 'package:curso__/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'data/task_inherited.dart';
 import 'primeira_tela.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const Tela1(),
+      home: TaskInherited(child: const Tela1() ),
     );
   }
 }

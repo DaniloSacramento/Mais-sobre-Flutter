@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:curso__/data/task_inherited.dart';
 import 'package:curso__/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -28,36 +29,7 @@ class _Tela1State extends State<Tela1> {
         elevation: 0,
       ),
       body: ListView(
-        children: const [
-          Task(
-            nome: "Aprender Flutter ",
-            foto: "assets/images/dash.png",
-            dificuldade: 2,
-          ),
-          Task(
-            nome: "Andar de Bike ",
-            foto: "assets/images/bike.webp",
-            dificuldade: 5,
-          ),
-          Task(
-            nome: "Ler ",
-            foto: "assets/images/meditar.jpeg",
-            dificuldade: 3,
-          ),
-          Task(
-            nome: "Meditar ",
-            foto: "assets/images/livro.jpg",
-            dificuldade: 4,
-          ),
-          Task(
-            nome: "Jogar ",
-            foto: "assets/images/jogar.jpg",
-            dificuldade: 1,
-          ),
-          SizedBox(
-            height: 80,
-          )
-        ],
+        children: TaskInherited.of(context)!.taskList,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
