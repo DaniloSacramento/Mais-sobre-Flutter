@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:curso__/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -12,8 +13,6 @@ class Tela1 extends StatefulWidget {
 }
 
 class _Tela1State extends State<Tela1> {
-  bool opacidade = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,49 +27,48 @@ class _Tela1State extends State<Tela1> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: AnimatedOpacity(
-        opacity: opacidade ? 1 : 0,
-        duration: Duration(milliseconds: 800),
-        child: ListView(
-          children: const [
-            Task(
-              nome: "Aprender Flutter ",
-              foto: "assets/images/dash.png",
-              dificuldade: 2,
-            ),
-            Task(
-              nome: "Andar de Bike ",
-              foto: "assets/images/bike.webp",
-              dificuldade: 5,
-            ),
-            Task(
-              nome: "Ler ",
-              foto: "assets/images/meditar.jpeg",
-              dificuldade: 3,
-            ),
-            Task(
-              nome: "Meditar ",
-              foto: "assets/images/livro.jpg",
-              dificuldade: 4,
-            ),
-            Task(
-              nome: "Jogar ",
-              foto: "assets/images/jogar.jpg",
-              dificuldade: 1,
-            ),
-            SizedBox(
-              height: 80,
-            )
-          ],
-        ),
+      body: ListView(
+        children: const [
+          Task(
+            nome: "Aprender Flutter ",
+            foto: "assets/images/dash.png",
+            dificuldade: 2,
+          ),
+          Task(
+            nome: "Andar de Bike ",
+            foto: "assets/images/bike.webp",
+            dificuldade: 5,
+          ),
+          Task(
+            nome: "Ler ",
+            foto: "assets/images/meditar.jpeg",
+            dificuldade: 3,
+          ),
+          Task(
+            nome: "Meditar ",
+            foto: "assets/images/livro.jpg",
+            dificuldade: 4,
+          ),
+          Task(
+            nome: "Jogar ",
+            foto: "assets/images/jogar.jpg",
+            dificuldade: 1,
+          ),
+          SizedBox(
+            height: 80,
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            opacidade = !opacidade;
-          });
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Formulario(),
+            ),
+          );
         },
-        child: const Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.add),
       ),
     );
   }

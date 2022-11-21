@@ -125,7 +125,9 @@ class _FormularioState extends State<Formulario> {
                             const SnackBar(
                               content: Text("Printando nova Tarefa"),
                             ),
+                            
                           );
+                          Navigator.pop(context);
                         }
                       },
                       child: Text("Adicionar"),
