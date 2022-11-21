@@ -1,10 +1,12 @@
+import 'package:curso__/data/task_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class Formulario extends StatefulWidget {
-  const Formulario({super.key});
+  const Formulario({super.key, required this.taskContext});
 
+  final BuildContext taskContext; 
   @override
   State<Formulario> createState() => _FormularioState();
 }
@@ -118,14 +120,18 @@ class _FormularioState extends State<Formulario> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print(nameController.text);
-                          print(int.parse(dificuldadeController.text));
-                          print(imageController.text);
+                          // print(nameController.text);
+                          // print(int.parse(dificuldadeController.text));
+                          // print(imageController.text);
+                          TaskInherited.of(widget.taskContext)!.newTask(
+                            nameController.text,
+                            imageController.text,
+                            int.parse(dificuldadeController.text),
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text("Printando nova Tarefa"),
+                              content: Text("Criando uma nova Tarefa"),
                             ),
-                            
                           );
                           Navigator.pop(context);
                         }
