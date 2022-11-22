@@ -20,13 +20,13 @@ class TaskDao {
     Map<String, dynamic> taskMap = toMap(tarefa);
     if(itemExists.isEmpty){
       print("a tarefa não existia");
-      return await bancoDeDados.insert(_tablename, values );
+      return await bancoDeDados.insert(_tablename, taskMap );
     }
     else {
       print("A tarefa já existia");
-      return await bancoDeDados.update(_tablename, values, where: "$_name = ? ", whereArgs: [tarefa.nome]);
+      return await bancoDeDados.update(_tablename, taskMap, where: "$_name = ? ", whereArgs: [tarefa.nome]);
     }
-  }
+  } 
     Map<String, dynamic> toMap(Task tarefa){
       print("Convertendo Tarefa em Map");
       final Map<String, dynamic> mapDetarefas = Map();
@@ -68,5 +68,9 @@ class TaskDao {
         return toList(result);
   }
 
-  delete(String nomeDaTarefa) async {}
+  delete(String nomeDaTarefa) async {
+    print("Estamos Deletando uma tarefa");
+    final Database bancoDeDados = await getDatabase();
+    return bancoDeDados.delete(_tablename, where: "$_name = ? " , whereArgs: [nomeDaTarefa]);
+  }
 }
