@@ -56,7 +56,7 @@ class Task extends StatefulWidget {
   final int dificuldade;  
   
 
-   Task(
+   Task( 
       {Key? key,
       required this.nome,
       required this.foto,
